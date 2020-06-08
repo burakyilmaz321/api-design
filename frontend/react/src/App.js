@@ -12,7 +12,7 @@ function App() {
   const [users, setUsers] = useState([]);
   const getUsers = async () => {
       try {
-          const response = await fetch(`http://localhost:8000/users/`);
+          const response = await fetch(`https://reading-challenge-backend.herokuapp.com/users/`);
           const jsonData = await response.json();
           setUsers(jsonData);
       } catch (err) {

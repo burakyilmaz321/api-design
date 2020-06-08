@@ -10,12 +10,13 @@ const EditReading = ({reading}) => {
         e.preventDefault();
         try {
             const body = { name, author, page };
-            fetch(`http://localhost:8000/users/${reading.user}/readings/${reading.id}/`, {
+            fetch(`https://reading-challenge-backend.herokuapp.com/users/${reading.user}/readings/${reading.id}/`, {
                 method: "PUT",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
-            });
-            window.location = "/";
+            })
+            .then(response => response.json())
+            .then(() => {window.location.reload()});
         } catch (err) {
             console.error(err.message);
         }

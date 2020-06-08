@@ -10,12 +10,13 @@ const InputReading = (props) => {
         e.preventDefault();
         try {
             const body = { name, author, page };
-            fetch(`http://localhost:8000/users/${props.user}/readings/`, {
+            fetch(`https://reading-challenge-backend.herokuapp.com/users/${props.user}/readings/`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)
-            });
-            window.location = "/";
+            })
+            .then(response => response.json())
+            .then(() => {window.location.reload()});
         } catch (err) {
             console.error(err.message)
         }

@@ -6,7 +6,7 @@ const ListReadings = (props) => {
     const [readings, setReadings] = useState([]);
     const getReadings = useCallback(async () => {
         try {
-            const response = await fetch(`http://localhost:8000/users/${props.user.id}/readings/`);
+            const response = await fetch(`https://reading-challenge-backend.herokuapp.com/users/${props.user.id}/readings/`);
             const jsonData = await response.json();
             setReadings(jsonData);
         } catch (err) {
@@ -15,7 +15,7 @@ const ListReadings = (props) => {
     }, [props.user])
     const deleteReading = async (id) => {
         try {
-            fetch(`http://localhost:8000/users/${props.user.id}/readings/${id}`, {method: "DELETE"});
+            fetch(`https://reading-challenge-backend.herokuapp.com/users/${props.user.id}/readings/${id}`, {method: "DELETE"});
             setReadings(readings.filter(reading => reading.id !== id))
         } catch (err) {
             console.error(err.message);

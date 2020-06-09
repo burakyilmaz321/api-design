@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import api_host from '../settings.js';
 
 
 const EditReading = ({reading}) => {
@@ -10,7 +11,7 @@ const EditReading = ({reading}) => {
         e.preventDefault();
         try {
             const body = { name, author, page };
-            fetch(`https://reading-challenge-backend.herokuapp.com/users/${reading.user}/readings/${reading.id}/`, {
+            fetch(`${api_host}/users/${reading.user}/readings/${reading.id}/`, {
                 method: "PUT",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)

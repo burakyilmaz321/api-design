@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
+import api_host from '../settings.js';
 
 const Arrow = ({pressed}) => {
     if (pressed) {
@@ -23,7 +24,7 @@ const Leaderboard = () => {
     const [leaderboard, setLeaderboard] = useState([]);
     const getLeaderboard = async () => {
         try {
-            const response = await fetch(`https://reading-challenge-backend.herokuapp.com/leaderboard/`);
+            const response = await fetch(`${api_host}/leaderboard/`);
             const jsonData = await response.json();
             setLeaderboard(jsonData.sort((a, b) => b.page - a.page));
         } catch (err) {

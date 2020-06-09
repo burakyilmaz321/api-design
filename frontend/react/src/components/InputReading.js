@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import api_host from '../settings.js';
 
 
 const InputReading = (props) => {
@@ -10,7 +11,7 @@ const InputReading = (props) => {
         e.preventDefault();
         try {
             const body = { name, author, page };
-            fetch(`https://reading-challenge-backend.herokuapp.com/users/${props.user}/readings/`, {
+            fetch(`${api_host}/users/${props.user}/readings/`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)
